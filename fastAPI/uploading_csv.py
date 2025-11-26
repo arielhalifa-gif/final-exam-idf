@@ -25,7 +25,11 @@ def upload_csv_and_sort(file: UploadFile):
     rows = list(reader)
     Sort.sort_by_distance(rows)
     jaluka_lefi_megurim = Megurim.megurim_A_B(rows)
-    
+    soldiers_who_were_actually_deployed = len(jaluka_lefi_megurim["megurim A"]) + len(jaluka_lefi_megurim["megurim B"])
+    return {
+         "number of soldiers deployed": soldiers_who_were_actually_deployed,
+         "soldiers left on waiting list": jaluka_lefi_megurim["waiting list"]
+    }
 
 
 
