@@ -5,8 +5,15 @@ from fastapi import UploadFile
 from utils.sort import Sort
 from utils.devide_by_meg import Megurim
 
+def read_csv_file(content):
+     # Parse CSV
+     reader = csv.reader(io.StringIO(content))
+     header = next(reader)
+     rows = list(reader)
+     return rows
+
 @app.post("/assignWithCsv")
-def upload_csv_and_sort(file: UploadFile):
+def upload_csv(file: UploadFile):
     """
     Endpoint that extracts and processes a CSV file from the request.
     Uses Python's csv library to read and parse the CSV data.
@@ -18,17 +25,14 @@ def upload_csv_and_sort(file: UploadFile):
 
     # Read file bytes
     content = file.file.read().decode("utf-8")
-
-    # Parse CSV
-    reader = csv.reader(io.StringIO(content))
-    header = next(reader)
-    rows = list(reader)
+    rows = read_csv_file(content)
     Sort.sort_by_distance(rows)
     jaluka_lefi_megurim = Megurim.megurim_A_B(rows)
     soldiers_who_were_actually_deployed = len(jaluka_lefi_megurim["megurim A"]) + len(jaluka_lefi_megurim["megurim B"])
+    waiting_list = len(jaluka_lefi_megurim["waiting list"])
     return {
          "number of soldiers deployed": soldiers_who_were_actually_deployed,
-         "soldiers left on waiting list": jaluka_lefi_megurim["waiting list"]
+         "soldiers left on waiting list": waiting_list
     }
 
 
