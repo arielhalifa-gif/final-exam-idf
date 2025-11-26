@@ -1,6 +1,8 @@
 import csv
 import io
-from api_generator import app
+from fastAPI.api_generator import app
+from fastapi import UploadFile
+
 @app.post("/assignWithCsv")
 def upload_csv(file: UploadFile):
     """
@@ -20,14 +22,14 @@ def upload_csv(file: UploadFile):
     header = next(reader)
     rows = list(reader)
 
-    for line in rows:
-        print(line)
+    # for line in rows:
+    #     print(line)
 
-    return {
-        "filename": file.filename,
-        "content_type": file.content_type,
-        "total_rows": len(rows),
-        "columns": header,
-        "data": rows[0:5],
-        "message": f"Successfully processed CSV with {len(rows)} rows"
-    }
+    # return {
+    #     "filename": file.filename,
+    #     "content_type": file.content_type,
+    #     "total_rows": len(rows),
+    #     "columns": header,
+    #     "data": rows[0:5],
+    #     "message": f"Successfully processed CSV with {len(rows)} rows"
+    # }
