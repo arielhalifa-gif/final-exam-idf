@@ -6,8 +6,3 @@ def get_space_by_meg(megurim):
     # returning a json dict with the answer
     response = space_left(megurim)
     return response
-
-
-@app.get("/waitingList")
-def get_the_waiting_list():
-    
