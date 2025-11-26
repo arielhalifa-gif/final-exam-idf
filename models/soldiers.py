@@ -8,4 +8,4 @@ class Soldiers(SQLModel, table = True):
     sex: str
     city: str
     distance_from_base: int
-    is_deployed: bool
+    is_deployed: bool = False
