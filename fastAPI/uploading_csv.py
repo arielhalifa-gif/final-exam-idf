@@ -50,21 +50,3 @@ def upload_csv(file: UploadFile):
          "number of soldiers deployed": soldiers_who_were_actually_deployed,
          "soldiers left on waiting list": waiting_list
     }
-
-
-
-
-
-
-
-#     for line in rows:
-#         print(line)
-
-    # return {
-    #     "filename": file.filename,
-    #     "content_type": file.content_type,
-    #     "total_rows": len(rows),
-    #     "columns": header,
-    #     "data": rows[0:5],
-    #     "message": f"Successfully processed CSV with {len(rows)} rows"
-    # }
