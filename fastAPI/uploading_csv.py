@@ -34,7 +34,7 @@ def upload_csv(file: UploadFile):
               soldier = Soldiers(personal_number = line[0],
                                  f_name = line[1],
                                  l_name = line[2],
-                                 sex = line[3],
+                                 gender = line[3],
                                  city = line[4],
                                  distance_from_base = line[5]
                                  )
@@ -57,8 +57,8 @@ def upload_csv(file: UploadFile):
 
 
 
-    for line in rows:
-        print(line)
+#     for line in rows:
+#         print(line)
 
     # return {
     #     "filename": file.filename,
